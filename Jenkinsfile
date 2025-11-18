@@ -7,7 +7,7 @@ pipeline {
     }
 
     environment {
-        CYPRESS_INSTALL_BINARY = "0"   // Empêche le téléchargement du binaire Cypress
+        CYPRESS_INSTALL_BINARY = "0"
     }
 
     stages {
@@ -20,15 +20,13 @@ pipeline {
 
         stage('Install dependencies') {
             steps {
-                sh 'npm ci'
+                sh 'npm install'   // <---- remplacé !
             }
         }
 
         stage('Run tests') {
             steps {
                 sh 'npx cypress run'
-                // ou si tu veux utiliser ton script:
-                // sh './cypress/e2e/batchs/login.sh'
             }
         }
     }
