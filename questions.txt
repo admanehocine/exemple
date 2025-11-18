@@ -1,0 +1,53 @@
+Questions Cypress
+1- C'est quoi les hooks ? 
+ca permet de centralisé  certain fonctionnalité &  eviter la redonndance , c'est a cause l'independace des tests "it"
+
+2- C'est quoi le POM ? 
+C'est un design  pattern, permet de séparer la logique de  code de metier et facilite  la  maintenance (mise à jour)
+
+3- L'approche BDD ?
+c'est  une approche de tests, d'ecrit un code de test en langague  naturelle, facilité  de  la lecture des tests pour tous  les utilisateurs
+
+4- comment faire  pour  lancer  une tests de regression?
+* npx cypress run --env  grepTags="@regression"
+* identifier les tests de regression
+* ajouter  un tags de regression
+* creer  un script bach pour lancer le tests auquelle que  je peeux  associé  le tags  qui a été  ajouter
+
+5- quel est le framework utilisé  pour  Cypress ?
+c'est Node JS
+
+6- quel est le langague de  programmation utilisé  pour  Cypress ?
+c'est Java script
+
+7- Quel est le fichier dans lequel on trouve tous les dépendances 
+C'est dans  fichier  package.json
+
+8- le framework de tests  utilisé ?
+c'est Cypress 
+
+9- les environnements que c'est:  
+    Dev: , 
+    recette: phase de test de validation pour s’assurer que ce qui a été développé correspond bien à ce qui a été demandé
+    ,pré-prod , iso-prod, prod , après-prod(PostProd), e2e , perf, smoke  
+    , test unitaires de developpeur
+    ,test intégrations sible echange de données verifier fonctionnement
+    ,test regression, test non regression (debut de test)
+10- stratégie temps d'attente
+    - impicite wait (gerer temps d'attente sur tous les elements)
+    - explicit wait (gerer  un temps d'attente sur  un seul element)
+11- BDD c'est  une approche de  test en langague naturelle en utilsant 
+    syntaxe Gurking  (When, Given, Then) afin de  facilité  collaboration 
+
+12- creation reporte en playwright ajouter dans config.js :=>
+  reporter: [['junit', { outputFile: 'playwright-report/junit/results.xml' }]],
+
+13- creation report avec allure 
+    lancer la commande
+    npx playwright test --reporter=allure-playwright
+    
+    -npm install allure-commandline 
+    * ou pour avoir le rapport en local:
+    => allure generate allure-results clean
+    * puis pour ouvrir le rapport:
+    => allure open allure-report
