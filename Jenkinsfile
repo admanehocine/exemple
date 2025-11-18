@@ -8,8 +8,15 @@ pipeline {
     }
 
     stages {
+        stage('verifiy dependance') {
+            steps {
+                
+                sh 'node -v && npm -v'
+            }
+        }
         stage('Install dependencies') {
             steps {
+                
                 sh 'npm install'
             }
         }
