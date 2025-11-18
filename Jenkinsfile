@@ -1,33 +1,23 @@
-pipeline{
-    agent{
-       docker{
-        
-       image 'cypress/included:13.6.6' 
-        args '--entrypoint=""'
-       }
-    }
-    stages{
-        stage('intall dependencies'){
-            steps{
-                sh 'npx cypress install'
-            }
+pipeline {
+    agent {
+        docker {
+            image 'cypress/included:13.6.6'
+            args '--entrypoint=""'
         }
-        stage('Run cypress'){
-            steps{
-                //sh './batchs/e2etests.sh'
-                //sh './batchs/e2etests.sh'
+    }
+
+    stages {
+
+        stage('Run cypress') {
+            steps {
                 sh 'npx cypress run'
             }
         }
-
     }
-    post{
-        always{
+
+    post {
+        always {
             junit 'results/*.xml'
-            //cucumber 'cypress/results/cucumber.json'
-            //archiveArtifacts 'cypress/screenshots/**'
-            //archiveArtifacts 'cypress/videos/**'
         }
     }
-    
 }
