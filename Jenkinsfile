@@ -7,19 +7,27 @@ pipeline{
        }
     }
     stages{
-stage('intall dependencies'){
-    steps{
-        sh 'npx cypress install'
-    }
-}
-stage('Run cypress'){
-    steps{
-        //sh './batchs/e2etests.sh'
-        //sh './batchs/e2etests.sh'
-        sh 'npx cypress run'
-    }
-}
+        stage('intall dependencies'){
+            steps{
+                sh 'npx cypress install'
+            }
+        }
+        stage('Run cypress'){
+            steps{
+                //sh './batchs/e2etests.sh'
+                //sh './batchs/e2etests.sh'
+                sh 'npx cypress run'
+            }
+        }
 
+    }
+    post{
+        always{
+            junit 'results/*.xml'
+            //cucumber 'cypress/results/cucumber.json'
+            //archiveArtifacts 'cypress/screenshots/**'
+            //archiveArtifacts 'cypress/videos/**'
+        }
     }
     
 }
